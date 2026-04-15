@@ -9,15 +9,16 @@
     ═══════════════════════════════════════════ -->
         <section class="hero">
             <div class="hero-bg">
-                <img src="/images/bg.png" alt="KANCER Ranch" class="hero-bg-img" />
+                <img src="/images/background.png" alt="KANCER Ranch" class="hero-bg-img" />
                 <div class="hero-overlay"></div>
             </div>
             <div class="hero-content">
-                <p class="hero-tag">Kancer Ranch & Garden</p>
-                <h1 class="hero-title">Domba Berkualitas,<br><em>Langsung dari Kancer</em></h1>
+                <p class="hero-tag">KANCER</p>
+                <h1 class="hero-title">Ranch, Garden<br>
+                    <em>and Everything in Between</em>
+                </h1>
                 <p class="hero-desc">
-                    Peternakan domba modern yang transparan, terpercaya,
-                    dan siap kirim ke seluruh Jabodetabek.
+                    Peternakan, Perkebunan, dan Segala Diantaranya.
                 </p>
                 <div class="hero-cta">
                     <a href="https://wa.me/6282315000834" target="_blank" class="btn-primary">
@@ -40,11 +41,8 @@
     ═══════════════════════════════════════════ -->
         <section class="about">
             <div class="about-img-wrap">
-                <img src="/images/about-us.jpg" alt="KANCER Ranch" class="about-img" />
-                <div class="about-badge">
-                    <span class="badge-num">Est.</span>
-                    <span class="badge-year">2020</span>
-                </div>
+                <img src="/images/bg.png" alt="KANCER Ranch" class="about-img" />
+
             </div>
             <div class="about-content">
                 <p class="section-tag">Tentang Kami</p>
@@ -380,9 +378,10 @@ export default {
 }
 
 .hero-tag {
-    font-size: 11px;
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
     letter-spacing: 0.18em;
-    color: #a8c9a0;
+    color: #cfc9af;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
@@ -396,7 +395,8 @@ export default {
 }
 
 .hero-title em {
-    color: #a8c9a0;
+    font-size: 24px;
+    color: #F5F0E8;
     font-style: italic;
 }
 

@@ -10,13 +10,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->decimal('price', 12, 0);   // harga domba bisa jutaan
+            $table->string('code')->unique();
+            $table->string('name');           
+            $table->string('category');       
+            $table->decimal('price', 12, 0);
+            $table->decimal('weight', 5, 1);
             $table->string('image')->nullable();
-            $table->string('badge')->nullable(); // Terlaris, Baru, Diskon, dll
-            $table->integer('stock')->default(0);
-            $table->decimal('weight', 5, 1)->nullable(); // berat dalam kg
+            $table->integer('stock')->default(1);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

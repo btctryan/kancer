@@ -54,10 +54,15 @@
 
                     <p class="detail-desc" v-if="product.description">{{ product.description }}</p>
                     <p class="detail-desc" v-else>
-                        Domba penggemukan dari KANCER Ranch & Garden. Dirawat intensif dengan pakan bergizi.
-                        Skor tingkat kegemukan sudah mencapai 3-5.
-                        //Harga termasuk biaya pengiriman ke seluruh Jabodebek & Bandung Raya.// BOLD
+                        Domba penggemukan dari KANCER Ranch & Garden.<br>
+                        Dirawat intensif dengan pakan bergizi.<br>
+                        <strong>Harga sudah termasuk biaya pengiriman ke seluruh Jabodebek & Bandung Raya.</strong><br>
+                        <strong>Garansi domba sehat sampai tujuan.</strong>
                     </p>
+
+
+
+
 
                     <!-- Quantity -->
                     <div class="qty-section" v-if="product.stock > 0">
@@ -92,27 +97,49 @@
                         </a>
                     </div>
 
-                    <!-- Info pengiriman -->
-                    <div class="detail-shipping">
-                        <div class="shipping-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16"
-                                height="16">
-                                <rect x="1" y="3" width="15" height="13" />
-                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-                                <circle cx="5.5" cy="18.5" r="2.5" />
-                                <circle cx="18.5" cy="18.5" r="2.5" />
+                    <!-- Informasi Penting -->
+                    <div class="detail-alert">
+                        <div class="alert-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"
+                                height="18">
+                                <path
+                                    d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                                <line x1="12" y1="9" x2="12" y2="13" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
                             </svg>
-                            <span>Pengiriman ke Jabodetabek</span>
+                            <span class="alert-title">Informasi Penting</span>
                         </div>
-                        <div class="shipping-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16"
-                                height="16">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                            </svg>
-                            <span>Garansi domba sehat sampai tujuan</span>
+
+                        <div class="alert-content">
+                            <div class="alert-item">
+                                <span class="alert-bullet"></span>
+                                <span>Bobot yang tertera merupakan bobot proyeksi.</span>
+                            </div>
+
+                            <div class="alert-item">
+                                <span class="alert-bullet"></span>
+                                <span>Bobot aktual akan diperbarui pada minggu kedua bulan Mei.</span>
+                            </div>
+
+                            <div class="alert-item">
+                                <span class="alert-bullet"></span>
+                                <span>Untuk domba yang telah terbooking, customer akan menerima video proses penimbangan
+                                    sebagai bentuk transparansi.</span>
+                            </div>
+
+                            <div class="alert-item">
+                                <span class="alert-bullet"></span>
+                                <span>Jika domba yang telah terbooking memiliki bobot aktual lebih rendah dari proyeksi,
+                                    maka akan dilakukan refund sesuai selisih bobot.</span>
+                            </div>
+
+                            <div class="alert-item">
+                                <span class="alert-bullet"></span>
+                                <span>Jika bobot aktual melebihi proyeksi, maka kelebihan bobot tersebut menjadi bonus
+                                    untuk customer.</span>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -425,6 +452,8 @@ export default {
 .qty-control {
     display: inline-flex;
     align-items: center;
+    width: fit-content;
+    max-width: 130px;
     border: 0.5px solid rgba(28, 18, 8, 0.2);
     border-radius: 6px;
     overflow: hidden;
@@ -512,28 +541,73 @@ export default {
     background: rgba(45, 90, 39, 0.06);
 }
 
-/* ── SHIPPING ─────────────────────────────────────── */
-.detail-shipping {
+/* ── ALERT ─────────────────────────────────────── */
+.detail-alert {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 16px;
-    background: rgba(45, 90, 39, 0.05);
-    border-radius: 6px;
-    border: 0.5px solid rgba(45, 90, 39, 0.15);
+    gap: 0;
+    background: #FFFBF5;
+    border-radius: 8px;
+    border: 1px solid rgba(184, 134, 11, 0.2);
+    overflow: hidden;
 }
 
-.shipping-item {
+.alert-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 13px;
-    color: rgba(28, 18, 8, 0.65);
+    padding: 14px 16px;
+    background: rgba(184, 134, 11, 0.08);
+    border-bottom: 1px solid rgba(184, 134, 11, 0.15);
 }
 
-.shipping-item svg {
-    color: #2D5A27;
+.alert-header svg {
+    color: #B8860B;
     flex-shrink: 0;
+}
+
+.alert-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1C1208;
+    letter-spacing: 0.02em;
+}
+
+.alert-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+}
+
+.alert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(28, 18, 8, 0.75);
+    line-height: 1.6;
+}
+
+.alert-bullet {
+    width: 5px;
+    height: 5px;
+    background: #B8860B;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+}
+
+.alert-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    background: rgba(45, 90, 39, 0.06);
+    border-top: 1px solid rgba(45, 90, 39, 0.15);
+    font-size: 13px;
+    color: #2D5A27;
+    font-weight: 500;
 }
 
 /* ── BACK ─────────────────────────────────────────── */
