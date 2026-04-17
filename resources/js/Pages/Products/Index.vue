@@ -25,7 +25,6 @@
         </div>
         <div class="filter-wrap">
           <select v-model="sortBy" @change="handleSort">
-            <option value="">Urutkan</option>
             <option value="price_asc">Harga Terendah</option>
             <option value="price_desc">Harga Tertinggi</option>
             <option value="name">Nama A-Z</option>
@@ -105,7 +104,7 @@ export default {
       products: [],
       loading: false,
       search: '',
-      sortBy: '',
+      sortBy: 'price_asc',
       addingToCart: null,
     }
   },

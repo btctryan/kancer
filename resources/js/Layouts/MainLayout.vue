@@ -1,4 +1,5 @@
 <template>
+
     <div class="app-layout">
 
         <!-- NAVBAR -->
@@ -6,33 +7,33 @@
             <div class="logo" @click="$inertia.visit('/')">
                 <img src="/images/logo.png" alt="Logo" style="height: 100px; width: auto; object-fit: contain;" />
             </div>
-
-            <div class="nav-links">
-                <a @click="$inertia.visit('/')">Home</a>
-                <a @click="$inertia.visit('/products')">Products</a>
-                <a @click="$inertia.visit('/about')">About</a>
+            <div class="nav-center">
+                <div class="nav-links">
+                    <a @click="$inertia.visit('/')">Home</a>
+                    <a @click="$inertia.visit('/products')">Products</a>
+                </div>
             </div>
 
             <div class="nav-right">
-                <template v-if="!authStore.isLoggedIn">
+                <!-- <template v-if="!authStore.isLoggedIn">
                     <button class="btn-ghost" @click="$inertia.visit('/login')">Login</button>
                     <button class="btn-gold" @click="$inertia.visit('/register')">Register</button>
                 </template>
-                <template v-else>
+<template v-else>
                     <span class="nav-user">Halo, {{ authStore.user?.name }}</span>
                     <button class="btn-ghost" @click="authStore.logout">Logout</button>
                 </template>
 
-                <div class="cart-icon" @click="$inertia.visit('/cart')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-                        <line x1="3" y1="6" x2="21" y2="6" />
-                        <path d="M16 10a4 4 0 01-8 0" />
-                    </svg>
-                    <span class="cart-badge" v-if="cartStore.totalItems > 0">
-                        {{ cartStore.totalItems }}
-                    </span>
-                </div>
+<div class="cart-icon" @click="$inertia.visit('/cart')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <path d="M16 10a4 4 0 01-8 0" />
+    </svg>
+    <span class="cart-badge" v-if="cartStore.totalItems > 0">
+        {{ cartStore.totalItems }}
+    </span>
+</div> -->
             </div>
         </nav>
 
@@ -154,6 +155,7 @@ main {
     gap: 12px;
     align-items: center;
 }
+
 
 .nav-user {
     font-size: 13px;

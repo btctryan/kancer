@@ -14,7 +14,7 @@ Route::post('/reset-password', [AuthController::class, 'resetPassword']);
 
 // ─── PUBLIC PRODUCTS ──────────────────────────────
 Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('api.products.show');
 
 Route::post('/admin/products/check-codes', function (\Illuminate\Http\Request $request) {
     $codes = $request->input('codes', []);

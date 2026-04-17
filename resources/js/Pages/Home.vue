@@ -14,8 +14,8 @@
             </div>
             <div class="hero-content">
                 <p class="hero-tag">KANCER</p>
-                <h1 class="hero-title">Ranch, Garden<br>
-                    <em>and Everything in Between</em>
+                <h1 class="hero-title">Ranch. Garden.<br>
+                    <em>and Everything in Between.</em>
                 </h1>
                 <p class="hero-desc">
                     Peternakan, Perkebunan, dan Segala Diantaranya.
@@ -24,7 +24,8 @@
                     <a href="https://wa.me/6282315000834" target="_blank" class="btn-primary">
                         Pesan via WhatsApp
                     </a>
-                    <button class="btn-outline" @click="scrollTo('products')">Lihat Koleksi</button>
+                    <button class="btn-outline"@click="$inertia.visit('/products')">Katalog Kurban 2026</button>
+                       <!-- <a @click="$inertia.visit('/products')">Products</a> -->
                 </div>
             </div>
             <div class="hero-scroll">
@@ -48,18 +49,23 @@
                 <p class="section-tag">Tentang Kami</p>
                 <h2 class="section-title">KANCER Ranch & Garden</h2>
                 <p class="about-desc">
-                    KANCER adalah peternakan domba modern yang berlokasi di Bandung Barat,
-                    Jawa Barat. Kami hadir untuk memudahkan kamu mendapatkan domba berkualitas
-                    dengan proses yang transparan, mudah, dan terpercaya.
+                    KANCER berangkat dari RANCH & GARDEN—sebagai fondasi dari apa yang kami bangun.
                 </p>
                 <p class="about-desc">
-                    Setiap domba kami dirawat dengan penuh perhatian — diberi pakan bergizi,
-                    lingkungan bersih, dan dipantau kesehatannya setiap hari. Pengiriman kami
-                    jangkau seluruh Jabodetabek langsung dari ranch ke tangan kamu.
+                    Seiring berjalan, ruang ini berkembang.
+                    Tidak hanya tentang beternak dan bertani, tetapi juga berbagai aktivitas, eksplorasi, dan pengalaman
+                    yang lahir dari proses yang sama.
+                </p>
+
+                <p class="about-desc">
+                    “And everything in between” mewakili hal-hal di antaranya—yang mungkin tidak selalu berhubungan
+                    langsung, namun tetap terhubung oleh nilai yang sama.
                 </p>
                 <p class="about-desc">
-                    Visi misi taro disini
+                    Lebih dari sekadar tempat atau aktivitas, KANCER adalah ruang untuk bertemu, belajar, dan tumbuh
+                    bersama—membangun sesuatu yang perlahan mengakar dan bertahan.
                 </p>
+
                 <div class="about-stats">
                     <div class="about-stat" v-for="stat in stats" :key="stat.label">
                         <span class="about-stat-num">{{ stat.value }}</span>
@@ -75,7 +81,7 @@
     ═══════════════════════════════════════════ -->
         <section class="features">
             <div class="section-header">
-                <p class="section-tag">Why Choose Kancer?</p>
+                <p class="section-tag">Kenapa #PercayaKancer?</p>
                 <h2 class="section-title">Shopping Advantages</h2>
             </div>
             <div class="features-grid">
@@ -202,8 +208,8 @@
         <section class="cta-section">
             <div class="cta-content">
                 <p class="section-tag">Siap Pesan?</p>
-                <h2 class="cta-title">Hubungi Kami Langsung<br>via WhatsApp</h2>
-                <p class="cta-desc">Konsultasi gratis, respon cepat, pengiriman terjamin.</p>
+                <h2 class="cta-title">Hubungi Kami<br>via WhatsApp</h2>
+                <p class="cta-desc">Bebas konsultasi, respon cepat, pengiriman terjamin.</p>
                 <a href="https://wa.me/6282315000834" target="_blank" class="btn-wa">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
                         <path
@@ -235,17 +241,17 @@ export default {
             heroImage: null,
             loadingProducts: false,
 
-            stats: [
-                { value: '500+', label: 'Pelanggan Puas' },
-                { value: '100+', label: 'Domba Tersedia' },
-                { value: '99%', label: 'Kepuasan Pembeli' },
-                { value: '1 Hari', label: 'Rata-rata Pengiriman' },
-            ],
+            // stats: [
+            //     { value: '500+', label: 'Pelanggan Puas' },
+            //     { value: '100+', label: 'Domba Tersedia' },
+            //     { value: '99%', label: 'Kepuasan Pembeli' },
+            //     { value: '1 Hari', label: 'Rata-rata Pengiriman' },
+            // ],
 
             features: [
                 {
-                    title: 'Free Shipping Jabodetabek',
-                    desc: 'Pengiriman gratis ke seluruh Jabodetabek. Domba tiba dalam kondisi sehat dan selamat.',
+                    title: 'Gratis Pengiriman',
+                    desc: 'Tanpa biaya pengiriman untuk wilayah Jabodetabek dan Bandung Raya—nilai lebih yang kami berikan agar Anda fokus pada kualitas, bukan tambahan biaya.',
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                    <rect x="1" y="3" width="15" height="13"/>
                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
@@ -255,14 +261,14 @@ export default {
                 },
                 {
                     title: 'Kualitas Terjamin',
-                    desc: 'Domba dipilih langsung, diberi pakan bergizi, dan dipantau kesehatannya setiap hari.',
+                    desc: 'Domba yang kami tawarkan bukan hasil perputaran cepat, melainkan melalui proses seleksi dan perawatan hingga benar-benar siap.',
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                  </svg>`,
                 },
                 {
                     title: 'Transaksi Aman',
-                    desc: 'Transaksi via WhatsApp yang aman. Dana dijamin hingga domba tiba — refund penuh jika bermasalah.',
+                    desc: 'Kami memastikan setiap transaksi berjalan aman—dan jika terdapat ketidaksesuaian, kami yang akan menanggung penyelesaiannya.',
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                    <path d="M7 11V7a5 5 0 0110 0v4"/>
@@ -554,7 +560,7 @@ export default {
 }
 
 .section-tag {
-    font-size: 11px;
+    font-size: 20px;
     letter-spacing: 0.14em;
     color: #2D5A27;
     text-transform: uppercase;

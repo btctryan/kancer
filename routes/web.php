@@ -63,7 +63,7 @@ Route::get('/products', function () {
 
 Route::get('/products/{id}', function ($id) {
     return Inertia::render('Products/Show', ['id' => $id]);
-})->name('products.show');
+})->name('products.detail');
 
 // ─── HALAMAN CART (harus login) ───────────────────
 Route::get('/cart', function () {
