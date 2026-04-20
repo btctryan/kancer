@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin;
 use Inertia\Inertia;
 
@@ -24,17 +23,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [Admin\AuthController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [Admin\DashboardController::class, 'index'])->name('dashboard');
 
+        // ── Route spesifik HARUS di atas resource ──
         Route::get('/products/bulk-upload', [Admin\ProductController::class, 'bulkUploadForm'])->name('products.bulk-upload');
         Route::post('/products/bulk-upload', [Admin\ProductController::class, 'bulkUpload'])->name('products.bulk-upload.post');
+        Route::get('/products/bulk-update', [Admin\ProductController::class, 'bulkUpdateForm'])->name('products.bulk-update');
+        Route::post('/products/bulk-update', [Admin\ProductController::class, 'bulkUpdate'])->name('products.bulk-update.post');
 
+        // ── Resource di bawah route spesifik ──
+        Route::resource('products', Admin\ProductController::class)->except(['show']);
 
-        // Produk (CRUD lengkap)
-        Route::resource('products', Admin\ProductController::class);
-
-        // User
         Route::get('/users', [Admin\UserController::class, 'index'])->name('users.index');
-
-        // Pesanan
         Route::get('/orders', [Admin\OrderController::class, 'index'])->name('orders.index');
     });
 });
@@ -65,7 +63,7 @@ Route::get('/products/{id}', function ($id) {
     return Inertia::render('Products/Show', ['id' => $id]);
 })->name('products.detail');
 
-// ─── HALAMAN CART (harus login) ───────────────────
+// ─── HALAMAN CART ─────────────────────────────────
 Route::get('/cart', function () {
     return Inertia::render('Cart/Index');
 })->name('cart');

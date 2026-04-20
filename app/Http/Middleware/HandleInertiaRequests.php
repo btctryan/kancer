@@ -37,6 +37,7 @@ class HandleInertiaRequests extends Middleware
             'flash' => [
                 'success' => $request->session()->get('success'),
                 'bulk_results' => $request->session()->get('bulk_results'),
+                'bulk_update_results' => $request->session()->get('bulk_update_results'),
             ],
         ];
     }

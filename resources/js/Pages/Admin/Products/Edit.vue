@@ -174,8 +174,8 @@ const previewCategory = computed(() => {
   const p = parseFloat(form.price)
   if (!p) return '—'
   if (p < 3600000)                    return 'Ekonomis'
-  if (p >= 3720000 && p <= 4080000)  return 'Medium'
-  if (p > 4200000)                    return 'Premium'
+  if (p >= 3600000 && p < 4200000)  return 'Medium'
+  if (p >= 4200000)                    return 'Premium'
   return 'Ekonomis'
 })
 

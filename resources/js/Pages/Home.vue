@@ -184,7 +184,7 @@
          (tidak butuh foto, tapi bisa tambah
           foto profil pembeli nanti)
     ═══════════════════════════════════════════ -->
-        <section class="testimonials">
+        <!-- <section class="testimonials">
             <div class="section-header">
                 <p class="section-tag">Kata Mereka</p>
                 <h2 class="section-title">Testimoni Pembeli</h2>
@@ -202,7 +202,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- CTA WHATSAPP -->
         <section class="cta-section">

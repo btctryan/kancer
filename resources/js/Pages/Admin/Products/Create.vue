@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="text-center">
                                     <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">Medium</span>
-                                    <p class="text-gray-500 mt-1">Rp 3.720.000 - Rp 4.080.000</p>
+                                    <p class="text-gray-500 mt-1">Rp 3.600.000 - Rp 4.200.000</p>
                                 </div>
                                 <div class="text-center">
                                     <span class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Premium</span>

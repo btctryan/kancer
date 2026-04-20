@@ -113,6 +113,109 @@ class ProductController extends Controller
         return back()->with('bulk_results', $results);
     }
 
+    // ─── BULK UPDATE FORM ─────────────────────────────
+    public function bulkUpdateForm()
+    {
+        return Inertia::render('Admin/Products/BulkUpdate');
+    }
+
+    // ─── BULK UPDATE PROSES ───────────────────────────
+    public function bulkUpdate(Request $request)
+    {
+        $request->validate([
+            'file' => ['required', 'file', 'mimes:xlsx,xls,csv', 'max:5120'],
+        ], [
+            'file.required' => 'File wajib diupload.',
+            'file.mimes' => 'Format file harus xlsx, xls, atau csv.',
+        ]);
+
+        $file = $request->file('file');
+        $path = $file->getRealPath();
+        $ext = strtolower($file->getClientOriginalExtension());
+
+        // Baca file Excel/CSV
+        $rows = [];
+
+        if ($ext === 'csv') {
+            // Baca CSV
+            if (($handle = fopen($path, 'r')) !== false) {
+                $header = null;
+                while (($row = fgetcsv($handle)) !== false) {
+                    if (!$header) {
+                        $header = array_map('strtolower', array_map('trim', $row));
+                        continue;
+                    }
+                    if (count($row) >= 3) {
+                        $rows[] = array_combine($header, $row);
+                    }
+                }
+                fclose($handle);
+            }
+        } else {
+            // Baca XLSX/XLS pakai PhpSpreadsheet
+            $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReaderForFile($path);
+            $reader->setReadDataOnly(true);
+            $spreadsheet = $reader->load($path);
+            $sheet = $spreadsheet->getActiveSheet();
+            $data = $sheet->toArray();
+
+            $header = null;
+            foreach ($data as $row) {
+                if (!$header) {
+                    $header = array_map('strtolower', array_map('trim', $row));
+                    continue;
+                }
+                if (!empty($row[0])) {
+                    $rows[] = array_combine($header, $row);
+                }
+            }
+        }
+
+        $results = [
+            'updated' => [],
+            'skipped' => [],
+            'failed' => [],
+        ];
+
+        foreach ($rows as $row) {
+            $code = strtoupper(trim($row['kode'] ?? $row['code'] ?? ''));
+            $weight = isset($row['berat']) ? floatval($row['berat']) : null;
+            $price = isset($row['harga']) ? intval($row['harga']) : null;
+
+            if (!$code)
+                continue;
+
+            $product = Product::where('code', $code)->first();
+
+            if (!$product) {
+                $results['failed'][] = "{$code} (kode tidak ditemukan)";
+                continue;
+            }
+
+            $updateData = [];
+
+            if ($price && $price > 0) {
+                $updateData['price'] = $price;
+                $updateData['category'] = $this->getCategory($price);
+                $updateData['name'] = $this->generateName($code, $price);
+            }
+
+            if ($weight && $weight > 0) {
+                $updateData['weight'] = $weight;
+            }
+
+            if (empty($updateData)) {
+                $results['skipped'][] = $code;
+                continue;
+            }
+
+            $product->update($updateData);
+            $results['updated'][] = "{$product->name} (Rp " . number_format($product->price, 0, ',', '.') . ")";
+        }
+
+        return back()->with('bulk_update_results', $results);
+    }
+
     // ─── CREATE ───────────────────────────────────────
     public function create()
     {

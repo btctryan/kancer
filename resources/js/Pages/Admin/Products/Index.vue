@@ -6,6 +6,10 @@
         class="border border-green-700 text-green-700 hover:bg-green-50 px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
         📸 Bulk Upload Foto
       </Link>
+      <Link :href="route('admin.products.bulk-update')"
+        class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
+        🔄 Update Harga & Berat
+      </Link>
       <Link :href="route('admin.products.create')"
         class="bg-green-700 hover:bg-green-800 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
         ➕ Tambah Produk

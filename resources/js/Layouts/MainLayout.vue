@@ -1,11 +1,9 @@
 <template>
-
     <div class="app-layout">
-
         <!-- NAVBAR -->
         <nav class="navbar">
             <div class="logo" @click="$inertia.visit('/')">
-                <img src="/images/logo.png" alt="Logo" style="height: 100px; width: auto; object-fit: contain;" />
+                <img src="/images/logo.png" alt="Logo" />
             </div>
             <div class="nav-center">
                 <div class="nav-links">
@@ -13,28 +11,7 @@
                     <a @click="$inertia.visit('/products')">Products</a>
                 </div>
             </div>
-
-            <div class="nav-right">
-                <!-- <template v-if="!authStore.isLoggedIn">
-                    <button class="btn-ghost" @click="$inertia.visit('/login')">Login</button>
-                    <button class="btn-gold" @click="$inertia.visit('/register')">Register</button>
-                </template>
-<template v-else>
-                    <span class="nav-user">Halo, {{ authStore.user?.name }}</span>
-                    <button class="btn-ghost" @click="authStore.logout">Logout</button>
-                </template>
-
-<div class="cart-icon" @click="$inertia.visit('/cart')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <path d="M16 10a4 4 0 01-8 0" />
-    </svg>
-    <span class="cart-badge" v-if="cartStore.totalItems > 0">
-        {{ cartStore.totalItems }}
-    </span>
-</div> -->
-            </div>
+            <div class="nav-right"></div>
         </nav>
 
         <!-- KONTEN HALAMAN -->
@@ -45,39 +22,28 @@
         <!-- FOOTER -->
         <footer class="footer">
             <div class="footer-grid">
-
-                <!-- Brand -->
                 <div class="footer-brand">
                     <span class="logo">KANCER</span>
-                    <p>Platform belanja domba online terpercaya dengan produk berkualitas dan pengiriman ke Jabodetabek.
-                    </p>
+                    <p>Platform belanja domba online terpercaya dengan produk berkualitas dan pengiriman ke Jabodetabek.</p>
                     <p class="footer-tagline">#percayakancer</p>
                 </div>
-
-                <!-- Lokasi -->
                 <div class="footer-col">
                     <h4>Location</h4>
                     <a href="https://maps.app.goo.gl/oJpzMcFtw6T5wSok7" target="_blank" class="footer-location">
                         <span class="location-name">KANCER - RANCH & GARDEN</span>
-                        <span class="location-addr">Jl. Ps. Senen No.6, Cimanggu, Kec. Ngamprah, Kabupaten Bandung
-                            Barat, Jawa
-                            Barat 40552</span>
+                        <span class="location-addr">Jl. Ps. Senen No.6, Cimanggu, Kec. Ngamprah, Kabupaten Bandung Barat, Jawa Barat 40552</span>
                     </a>
                 </div>
-
-                <!-- About -->
                 <div class="footer-col">
                     <h4>About Us</h4>
                     <a href="https://www.instagram.com/thekancers" target="_blank">Instagram</a>
                     <a href="https://wa.me/6282315000834" target="_blank">WhatsApp</a>
                 </div>
-
             </div>
             <div class="footer-bottom">
                 <p>© 2026 KANCER. #PERCAYAKANCER</p>
             </div>
         </footer>
-
     </div>
 </template>
 
@@ -87,7 +53,6 @@ import { useAuthStore } from '@/stores/auth'
 
 export default {
     name: 'MainLayout',
-
     setup() {
         const cartStore = useCartStore()
         const authStore = useAuthStore()
@@ -97,7 +62,6 @@ export default {
 </script>
 
 <style scoped>
-/* ── LAYOUT ───────────────────────────────────────── */
 .app-layout {
     min-height: 100vh;
     display: flex;
@@ -117,7 +81,7 @@ main {
     align-items: center;
     justify-content: space-between;
     padding: 0 40px;
-    height: 70px;
+    height: 60px; /* ← Navbar diperbesar biar logo muat */
     border-bottom: 0.5px solid rgba(28, 18, 8, 0.12);
     position: sticky;
     top: 0;
@@ -129,110 +93,41 @@ main {
     cursor: pointer;
     display: flex;
     align-items: center;
-    height: 100%;
+}
+
+.logo img {
+    height: 70px; /* ← Logo 70px, navbar 90px = ada space atas bawah */
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .nav-links {
     display: flex;
-    gap: 28px;
+    gap: 32px;
     align-items: center;
 }
 
 .nav-links a {
-    font-size: 13px;
-    color: rgba(28, 18, 8, 0.6);
+    font-size: 13px; /* ← Kembali ke size awal */
+    font-weight: 400; /* ← Normal weight (bukan bold) */
+    color: rgba(28, 18, 8, 0.6); /* ← Warna agak transparansi seperti awal */
     cursor: pointer;
     letter-spacing: 0.04em;
     transition: color 0.2s;
 }
 
 .nav-links a:hover {
-    color: #1C1208;
+    color: #1C1208; /* ← Hover jadi hitam */
 }
 
 .nav-right {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-
-.nav-user {
-    font-size: 13px;
-    color: rgba(28, 18, 8, 0.7);
-}
-
-.btn-ghost {
-    font-size: 12px;
-    padding: 7px 16px;
-    border: 0.5px solid rgba(28, 18, 8, 0.3);
-    border-radius: 4px;
-    background: transparent;
-    color: #1C1208;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-}
-
-.btn-ghost:hover {
-    background: rgba(28, 18, 8, 0.06);
-}
-
-.btn-gold {
-    font-size: 12px;
-    padding: 7px 16px;
-    border: none;
-    border-radius: 4px;
-    background: #8B1A1A;
-    color: #F5F0E8;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-}
-
-.btn-gold:hover {
-    background: #a01f1f;
-}
-
-.cart-icon {
-    position: relative;
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0.5px solid rgba(28, 18, 8, 0.2);
-    border-radius: 4px;
-    transition: border-color 0.2s;
-}
-
-.cart-icon:hover {
-    border-color: rgba(28, 18, 8, 0.5);
-}
-
-.cart-icon svg {
-    width: 16px;
-    height: 16px;
-}
-
-.cart-badge {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background: #2D5A27;
-    color: #F5F0E8;
-    font-size: 9px;
-    font-weight: 700;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 0;
 }
 
 /* ── FOOTER ───────────────────────────────────────── */
@@ -253,12 +148,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 12px;
-}
-
-.footer-logo {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
 }
 
 .footer-brand p {
@@ -332,9 +221,20 @@ main {
 @media (max-width: 768px) {
     .navbar {
         padding: 0 20px;
+        height: 70px;
     }
 
-    .nav-links {
+    .logo img {
+        height: 50px;
+    }
+
+    .nav-center {
+        position: static;
+        transform: none;
+        margin-left: auto;
+    }
+
+    .nav-right {
         display: none;
     }
 
